@@ -1,70 +1,92 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>AgentFlow Studio</title>
+<div class="app-shell">
+  <aside class="left-column">
+    <section class="card brand-card">
+      <div class="brand-row">
+        <div class="brand-icon">AI</div>
+        <div>
+          <h1>AgentFlow Studio</h1>
+          <p>Multi-agent orchestration playground</p>
+        </div>
+      </div>
+    </section>
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <section class="card">
+      <h2>Goal</h2>
+      <textarea id="goalInput">Create a PRD outline for a privacy-first family expense tracker PWA for India.</textarea>
 
-<link rel="stylesheet" href="styles.css">
-</head>
+      <label>Orchestration Mode</label>
+      <select id="mode">
+        <option value="planner-first">Planner First</option>
+        <option value="sequential">Sequential</option>
+        <option value="parallel">Parallel</option>
+        <option value="debate">Debate</option>
+      </select>
 
-<body>
+      <label>Instruction Style</label>
+      <select id="style">
+        <option value="balanced">Balanced</option>
+        <option value="concise">Concise</option>
+        <option value="detailed">Detailed</option>
+      </select>
 
-<h1>AgentFlow Studio</h1>
-<p>Multi-Agent AI Orchestration Playground</p>
+      <button id="runWorkflow">Run Workflow</button>
+    </section>
 
-<div class="container">
+    <section class="card">
+      <h2>Agents</h2>
+      <div id="agentsList"></div>
+    </section>
 
-  <!-- LEFT -->
-  <div class="panel">
-    <h3>Goal</h3>
-    <textarea id="goalInput">Create a PRD outline for a privacy-first family expense tracker PWA for India.</textarea>
+    <section class="card">
+      <h2>Agent Metrics</h2>
+      <div id="metrics"></div>
+    </section>
+  </aside>
 
-    <h3>Mode</h3>
-    <select id="mode">
-      <option>Sequential</option>
-      <option>Parallel</option>
-      <option>Debate</option>
-      <option>Planner First</option>
-    </select>
+  <main class="center-column">
+    <section class="card">
+      <div class="card-head">
+        <h2>Execution Map</h2>
+        <span class="status-pill success">Complete</span>
+      </div>
+      <div id="executionMap"></div>
+    </section>
 
-    <button onclick="runWorkflow()">Run</button>
-  </div>
-
-  <!-- CENTER -->
-  <div class="panel">
-    <h3>Execution Map</h3>
-    <div id="executionMap"></div>
-
-    <div class="live-feed">
-      <h3>Live Execution Feed</h3>
+    <section class="card">
+      <div class="card-head">
+        <h2>Live Feed</h2>
+        <span class="muted-pill">Per-step timings and token cost</span>
+      </div>
       <div id="feed"></div>
-    </div>
-  </div>
+    </section>
+  </main>
 
-  <!-- RIGHT -->
-  <div class="panel">
-    <h3>Agent Metrics</h3>
-    <div id="metrics"></div>
+  <aside class="right-column">
+    <section class="card">
+      <h2>Shared Memory</h2>
+      <div id="sharedMemory"></div>
+    </section>
 
-    <h3>Flow Visualizer</h3>
-    <div id="visualizer"></div>
-
-    <div class="goal-output">
-      <h3>✅ Goal Achieved Output</h3>
+    <section class="card goal-card">
+      <h2>Goal Output</h2>
       <div id="goalOutput"></div>
-    </div>
-  </div>
+    </section>
 
+    <section class="card">
+      <div class="card-head">
+        <h2>Dynamic Flow Visualizer</h2>
+        <span class="muted-pill">Live agent pulse</span>
+      </div>
+      <div id="visualizer"></div>
+    </section>
+
+    <section class="card">
+      <h2>Workflow Summary</h2>
+      <div id="workflowSummary"></div>
+    </section>
+  </aside>
 </div>
 
-<footer>
-Built by Krishnamurthy Kandregula
+<footer class="footer">
+  Built by Krishnamurthy Kandregula
 </footer>
-
-<script src="app.js"></script>
-
-</body>
-</html>
