@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0f172a" />
+  <title>AgentFlow Studio</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand-card">
+        <div class="brand-icon">AI</div>
+        <div>
+          <h1>AgentFlow Studio</h1>
+          <p>Multi-agent orchestration playground</p>
+        </div>
+      </div>
+
+      <div class="panel compact">
+        <h2>Goal</h2>
+        <textarea id="goalInput" placeholder="Example: Create a GTM strategy for an AI-powered expense tracker targeting Indian freelancers"></textarea>
+        <label>
+          Orchestration Mode
+          <select id="modeSelect">
+            <option value="sequential">Sequential</option>
+            <option value="parallel">Parallel</option>
+            <option value="debate">Debate</option>
+            <option value="planner-first">Planner First</option>
+          </select>
+        </label>
+        <label>
+          Instruction Style
+          <select id="instructionSelect">
+            <option value="balanced">Balanced</option>
+            <option value="strict">Strict</option>
+            <option value="creative">Creative</option>
+            <option value="fast">Fast</option>
+          </select>
+        </label>
+        <div class="button-row">
+          <button type="button" id="runBtn" class="primary">Run Workflow</button>
+          <button type="button" id="demoBtn">Load Demo</button>
+        </div>
+      </div>
+
+      <div class="panel compact">
+        <h2>Agents</h2>
+        <div id="agentList" class="agent-list"></div>
+      </div>
+
+      <div class="panel compact">
+        <h2>Agent Metrics</h2>
+        <div id="metricsPanel" class="metrics-panel empty-state">Run a workflow to see agent time, token count, and estimated token cost.</div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <section class="hero-grid hero-grid-top">
+        <div class="panel hero-card">
+          <div class="section-header">
+            <h2>Execution Map</h2>
+            <span id="statusBadge" class="status-badge idle">Idle</span>
+          </div>
+          <div id="workflowMap" class="workflow-map"></div>
+        </div>
+        <div class="panel hero-card">
+          <h2>Shared Memory</h2>
+          <div id="memoryPanel" class="memory-panel empty-state">Run a workflow to see task plans, intermediate outputs, and final synthesis.</div>
+        </div>
+      </section>
+
+      <section class="hero-grid hero-grid-bottom">
+        <div class="panel visualizer-card">
+          <div class="section-header">
+            <h2>Dynamic Flow Visualizer</h2>
+            <span class="helper-chip">Live agent pulse</span>
+          </div>
+          <div id="flowVisualizer" class="flow-visualizer empty-state">Run a workflow to see how the orchestrator routes instructions across agents.</div>
+        </div>
+        <div class="panel outcome-card">
+          <h2>Goal Output</h2>
+          <div id="goalOutcome" class="goal-outcome empty-state">The achieved goal output and workflow summary will appear here.</div>
+        </div>
+      </section>
+
+      <section class="content-grid">
+        <div class="panel">
+          <div class="section-header">
+            <h2>Live Feed</h2>
+            <span class="helper-chip">Per-step timings and token cost</span>
+          </div>
+          <div id="feed" class="feed empty-state">No execution yet.</div>
+        </div>
+
+        <div class="panel">
+          <div class="section-header">
+            <h2>Final Orchestrated Output</h2>
+            <button type="button" id="replayBtn" class="ghost" disabled>Replay</button>
+          </div>
+          <div id="finalOutput" class="final-output empty-state">The orchestrated result will appear here.</div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="site-footer">Built by Krishnamurthy Kandregula</footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
